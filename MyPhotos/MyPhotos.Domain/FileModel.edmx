@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FileModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FileModelStoreContainer">
+    <EntitySet Name="Files" EntityType="FileModel.Store.Files" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Attributes" EntityType="FileModel.Store.Attributes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FileAttributes" EntityType="FileModel.Store.FileAttributes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Files_Video" EntityType="FileModel.Store.Files_Video" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Files_Photo" EntityType="FileModel.Store.Files_Photo" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FileAttributeAttribute" Association="FileModel.Store.FileAttributeAttribute">
+      <End Role="FileAttribute" EntitySet="FileAttributes" />
+      <End Role="Attribute" EntitySet="Attributes" />
+    </AssociationSet>
+    <AssociationSet Name="FileFileAttribute" Association="FileModel.Store.FileFileAttribute">
+      <End Role="File" EntitySet="Files" />
+      <End Role="FileAttribute" EntitySet="FileAttributes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Video_inherits_File" Association="FileModel.Store.FK_Video_inherits_File">
+      <End Role="File" EntitySet="Files" />
+      <End Role="Video" EntitySet="Files_Video" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Photo_inherits_File" Association="FileModel.Store.FK_Photo_inherits_File">
+      <End Role="File" EntitySet="Files" />
+      <End Role="Photo" EntitySet="Files_Photo" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Attributes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AllowsMultipleValues" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FileAttributes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AttributeId" Type="uniqueidentifier" Nullable="true" />
+    <Property Name="FileId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Files_Video">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Files_Photo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FileAttributeAttribute">
+    <End Role="FileAttribute" Type="FileModel.Store.FileAttributes" Multiplicity="*" />
+    <End Role="Attribute" Type="FileModel.Store.Attributes" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Attribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FileAttribute">
+        <PropertyRef Name="AttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FileFileAttribute">
+    <End Role="File" Type="FileModel.Store.Files" Multiplicity="1" />
+    <End Role="FileAttribute" Type="FileModel.Store.FileAttributes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FileAttribute">
+        <PropertyRef Name="FileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Video_inherits_File">
+    <End Role="File" Type="FileModel.Store.Files" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Video" Type="FileModel.Store.Files_Video" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Video">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Photo_inherits_File">
+    <End Role="File" Type="FileModel.Store.Files" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Photo" Type="FileModel.Store.Files_Photo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FileModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="FileModelContainer" annotation:LazyLoadingEnabled="true" cg:TypeAccess="Internal">
+          <EntitySet Name="Files" EntityType="FileModel.File" />
+          <EntitySet Name="Attributes" EntityType="FileModel.Attribute" />
+          <EntitySet Name="FileAttributes" EntityType="FileModel.FileAttribute" />
+          <AssociationSet Name="FileAttributeAttribute" Association="FileModel.FileAttributeAttribute">
+            <End Role="FileAttribute" EntitySet="FileAttributes" />
+            <End Role="Attribute" EntitySet="Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FileFileAttribute" Association="FileModel.FileFileAttribute">
+            <End Role="File" EntitySet="Files" />
+            <End Role="FileAttribute" EntitySet="FileAttributes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" cg:SetterAccess="Private" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" cg:SetterAccess="Private" />
+          <Property Name="Path" Type="String" Nullable="false" cg:SetterAccess="Private" />
+          <NavigationProperty Name="FileAttributes" Relationship="FileModel.FileFileAttribute" FromRole="File" ToRole="FileAttribute" cg:SetterAccess="Private" />
+        </EntityType>
+        <EntityType Name="Attribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" cg:SetterAccess="Private" />
+          <Property Name="Name" Type="String" Nullable="false" cg:SetterAccess="Private" />
+          <Property Name="AllowsMultipleValues" Type="Boolean" Nullable="false" cg:SetterAccess="Private" />
+        </EntityType>
+        <EntityType Name="FileAttribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" cg:SetterAccess="Private" />
+          <Property Name="Value" Type="String" Nullable="false" cg:SetterAccess="Private" />
+          <NavigationProperty Name="Attribute" Relationship="FileModel.FileAttributeAttribute" FromRole="FileAttribute" ToRole="Attribute" cg:SetterAccess="Private" />
+          <Property Name="AttributeId" Type="Guid" Nullable="true" cg:SetterAccess="Private" />
+          <NavigationProperty Name="File" Relationship="FileModel.FileFileAttribute" FromRole="FileAttribute" ToRole="File" cg:SetterAccess="Private" />
+          <Property Name="FileId" Type="Guid" Nullable="false" cg:SetterAccess="Private" />
+        </EntityType>
+        <Association Name="FileAttributeAttribute">
+          <End Type="FileModel.FileAttribute" Role="FileAttribute" Multiplicity="*" />
+          <End Type="FileModel.Attribute" Role="Attribute" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Attribute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FileAttribute">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FileFileAttribute">
+          <End Type="FileModel.File" Role="File" Multiplicity="1" />
+          <End Type="FileModel.FileAttribute" Role="FileAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="File">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FileAttribute">
+              <PropertyRef Name="FileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Video" BaseType="FileModel.File" />
+        <EntityType Name="Photo" BaseType="FileModel.File" />
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FileModelStoreContainer" CdmEntityContainer="FileModelContainer">
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="IsTypeOf(FileModel.File)">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(FileModel.Video)">
+        <MappingFragment StoreEntitySet="Files_Video">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(FileModel.Photo)">
+        <MappingFragment StoreEntitySet="Files_Photo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attributes">
+      <EntityTypeMapping TypeName="IsTypeOf(FileModel.Attribute)">
+        <MappingFragment StoreEntitySet="Attributes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AllowsMultipleValues" ColumnName="AllowsMultipleValues" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileAttributes">
+      <EntityTypeMapping TypeName="IsTypeOf(FileModel.FileAttribute)">
+        <MappingFragment StoreEntitySet="FileAttributes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
