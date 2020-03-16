@@ -18,6 +18,7 @@ namespace MyPhotos.Gui.WindowsForms
         private void InitEvents()
         {
             AttributesBtn.Click += (sender, e) => componentFactory.Resolve<AttributesForm>().ShowDialog();
+            PhotosBtn.Click += (sender, e) => componentFactory.Resolve<PhotosForm>().ShowDialog();
         }
     }
 }

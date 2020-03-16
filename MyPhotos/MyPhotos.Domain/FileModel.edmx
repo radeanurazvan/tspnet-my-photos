@@ -136,7 +136,7 @@
             <End Role="FileAttribute" EntitySet="FileAttributes" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="File">
+        <EntityType Name="File" Abstract="true">
           <Key>
             <PropertyRef Name="Id" />
           </Key>

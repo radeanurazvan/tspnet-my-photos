@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MyPhotos.Domain;
 using MyPhotos.Domain.Interfaces;
 
 namespace MyPhotos.Persistence.EntityFramework
@@ -7,7 +8,8 @@ namespace MyPhotos.Persistence.EntityFramework
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            return services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
+            return services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>))
+                .AddScoped(typeof(IRepository<Photo>), typeof(PhotosRepository));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using MyPhotos.Domain;
 using MyPhotos.Persistence.EntityFramework;
@@ -7,6 +8,7 @@ namespace MyPhotos.Gui.WindowsForms
 {
     public static class Program
     {
+        [STAThread]
         public static void Main()
         {
             var services = new ServiceCollection()

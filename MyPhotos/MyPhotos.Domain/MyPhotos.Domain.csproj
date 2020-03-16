@@ -59,6 +59,8 @@
     </Compile>
     <Compile Include="Common\IEntity.cs" />
     <Compile Include="Entities\Attribute.cs" />
+    <Compile Include="Entities\File.cs" />
+    <Compile Include="Entities\Photo.cs" />
     <Compile Include="File.cs">
       <DependentUpon>FileModel.tt</DependentUpon>
     </Compile>

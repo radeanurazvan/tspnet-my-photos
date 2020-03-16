@@ -10,6 +10,7 @@ namespace MyPhotos.Gui.WindowsForms
         {
             return services.AddScoped<IComponentFactory, ComponentFactory>()
                 .AddScoped<AttributesForm>()
+                .AddScoped<PhotosForm>()
                 .AddScoped<MainForm>();
         }
     }

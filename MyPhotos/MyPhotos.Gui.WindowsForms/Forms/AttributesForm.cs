@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +24,11 @@ namespace MyPhotos.Gui.WindowsForms.Forms
         protected override async void OnLoad(EventArgs e)
         {
             await LoadList();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            this.AttributesList.Items.Clear();
         }
 
         private Task Save()

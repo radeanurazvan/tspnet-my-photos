@@ -56,9 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseEntityFrameworkRepository.cs" />
-    <Compile Include="EntityFrameworkRepository.cs" />
+    <Compile Include="Repositories\BaseEntityFrameworkRepository.cs" />
+    <Compile Include="Repositories\EntityFrameworkRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\PhotosRepository.cs" />
     <Compile Include="ServiceCollectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,5 +75,6 @@
       <Name>MyPhotos.Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
