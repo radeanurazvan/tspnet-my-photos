@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/15/2020 21:13:06
--- Generated from EDMX file: G:\Facultate\an3\sem2\tspnet\tspnet-my-photos\MyPhotos\MyPhtos.Persistence.EntityFramework\FileModel.edmx
+-- Date Created: 03/16/2020 20:38:50
+-- Generated from EDMX file: G:\Facultate\an3\sem2\tspnet\tspnet-my-photos\MyPhotos\MyPhotos.Domain\FileModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,38 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_FileAttributeAttribute]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FileAttributes] DROP CONSTRAINT [FK_FileAttributeAttribute];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FileFileAttribute]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FileAttributes] DROP CONSTRAINT [FK_FileFileAttribute];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Video_inherits_File]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Files_Video] DROP CONSTRAINT [FK_Video_inherits_File];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Photo_inherits_File]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Files_Photo] DROP CONSTRAINT [FK_Photo_inherits_File];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Files]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Files];
+GO
+IF OBJECT_ID(N'[dbo].[Attributes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Attributes];
+GO
+IF OBJECT_ID(N'[dbo].[FileAttributes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FileAttributes];
+GO
+IF OBJECT_ID(N'[dbo].[Files_Video]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Files_Video];
+GO
+IF OBJECT_ID(N'[dbo].[Files_Photo]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Files_Photo];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -31,7 +58,8 @@ GO
 CREATE TABLE [dbo].[Files] (
     [Id] uniqueidentifier  NOT NULL,
     [CreatedAt] datetime  NOT NULL,
-    [Path] nvarchar(max)  NOT NULL
+    [Path] nvarchar(max)  NOT NULL,
+    [IsDeleted] bit  NOT NULL
 );
 GO
 
@@ -39,7 +67,8 @@ GO
 CREATE TABLE [dbo].[Attributes] (
     [Id] uniqueidentifier  NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [AllowsMultipleValues] bit  NOT NULL
+    [AllowsMultipleValues] bit  NOT NULL,
+    [IsDeleted] bit  NOT NULL
 );
 GO
 

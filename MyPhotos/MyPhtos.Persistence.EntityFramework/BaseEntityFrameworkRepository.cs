@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
@@ -18,7 +19,7 @@ namespace MyPhotos.Persistence.EntityFramework
         protected BaseEntityFrameworkRepository(DbContext context)
         {
             this.context = context;
-            this.entitiesSet = DecorateEntities(context.Set<T>());
+            this.entitiesSet = DecorateEntities(context.Set<T>().Where(e => !e.IsDeleted));
         }
 
         public async Task<Maybe<T>> GetById(Guid id)
@@ -37,8 +38,16 @@ namespace MyPhotos.Persistence.EntityFramework
             return Task.CompletedTask;
         }
 
-        public Task SaveChanges() => context.SaveChangesAsync();
+        public async Task SaveChanges()
+        {
+            await context.SaveChangesAsync();
+        }
 
         protected virtual IQueryable<T> DecorateEntities(IQueryable<T> entities) => entities;
+    }
+
+    internal static class MissingDllHack
+    {
+        private static SqlProviderServices instance = SqlProviderServices.Instance;
     }
 }

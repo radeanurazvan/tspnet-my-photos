@@ -17,5 +17,6 @@ namespace MyPhotos.Domain
         public System.Guid Id { get; private set; }
         public string Name { get; private set; }
         public bool AllowsMultipleValues { get; private set; }
+        public bool IsDeleted { get; private set; }
     }
 }

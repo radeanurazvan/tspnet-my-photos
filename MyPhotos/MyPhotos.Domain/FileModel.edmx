@@ -35,6 +35,7 @@
     <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
     <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Attributes">
     <Key>
@@ -43,6 +44,7 @@
     <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="AllowsMultipleValues" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="FileAttributes">
     <Key>
@@ -142,6 +144,7 @@
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" cg:SetterAccess="Private" />
           <Property Name="Path" Type="String" Nullable="false" cg:SetterAccess="Private" />
           <NavigationProperty Name="FileAttributes" Relationship="FileModel.FileFileAttribute" FromRole="File" ToRole="FileAttribute" cg:SetterAccess="Private" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" cg:SetterAccess="Private" />
         </EntityType>
         <EntityType Name="Attribute">
           <Key>
@@ -150,6 +153,7 @@
           <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" cg:SetterAccess="Private" />
           <Property Name="Name" Type="String" Nullable="false" cg:SetterAccess="Private" />
           <Property Name="AllowsMultipleValues" Type="Boolean" Nullable="false" cg:SetterAccess="Private" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" cg:SetterAccess="Private" />
         </EntityType>
         <EntityType Name="FileAttribute">
           <Key>
@@ -200,6 +204,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(FileModel.Video)">
@@ -219,6 +224,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="AllowsMultipleValues" ColumnName="AllowsMultipleValues" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

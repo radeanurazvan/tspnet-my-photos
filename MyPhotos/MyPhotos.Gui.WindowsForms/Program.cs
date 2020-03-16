@@ -12,7 +12,7 @@ namespace MyPhotos.Gui.WindowsForms
             var services = new ServiceCollection()
                 .AddDomain()
                 .AddInfrastructure()
-                .AddScoped<MainForm>();
+                .AddPresentation();
 
             using (var scope = services.BuildServiceProvider().CreateScope())
             {

@@ -58,6 +58,7 @@
       <DependentUpon>FileModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Common\IEntity.cs" />
+    <Compile Include="Entities\Attribute.cs" />
     <Compile Include="File.cs">
       <DependentUpon>FileModel.tt</DependentUpon>
     </Compile>
@@ -109,6 +110,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <None Include="FileModel.edmx.diagram">
       <DependentUpon>FileModel.edmx</DependentUpon>
     </None>
@@ -117,5 +119,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

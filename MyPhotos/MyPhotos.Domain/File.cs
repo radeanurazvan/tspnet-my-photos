@@ -23,6 +23,7 @@ namespace MyPhotos.Domain
         public System.Guid Id { get; private set; }
         public System.DateTime CreatedAt { get; private set; }
         public string Path { get; private set; }
+        public bool IsDeleted { get; private set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FileAttribute> FileAttributes { get; private set; }
