@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using MyPhotos.Domain.Common;
@@ -25,6 +26,11 @@ namespace MyPhotos.Persistence.EntityFramework
         public async Task<Maybe<T>> GetById(Guid id)
         {
             return await entitiesSet.FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task<Maybe<T>> FindOne(Expression<Func<T, bool>> predicate)
+        {
+            return await entitiesSet.FirstOrDefaultAsync(predicate);
         }
 
         public async Task<IEnumerable<T>> GetAll()
