@@ -50,12 +50,13 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
@@ -83,6 +84,7 @@
     <Compile Include="Forms\PhotosForm.Designer.cs">
       <DependentUpon>PhotosForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyPhotosProxy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCollectionExtensions.cs" />
@@ -91,16 +93,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MyPhotos.Domain\MyPhotos.Domain.csproj">
-      <Project>{87DAD470-4B8D-4EE8-AAE0-A46C9DA534AB}</Project>
-      <Name>MyPhotos.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyPhtos.Persistence.EntityFramework\MyPhotos.Persistence.EntityFramework.csproj">
-      <Project>{d4f7554f-12bf-4674-829e-442fb85f8ab9}</Project>
-      <Name>MyPhotos.Persistence.EntityFramework</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\AttributesForm.resx">

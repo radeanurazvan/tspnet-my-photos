@@ -12,7 +12,7 @@ namespace MyPhotos.Business.Contracts
         Task<IEnumerable<AttributeDto>> GetAttributes();
 
         [OperationContract]
-        Task<ApiResult> CreateAttribute(AttributeDto dto);
+        Task<ApiResult<AttributeDto>> CreateAttribute(AttributeDto dto);
 
         [OperationContract]
         Task<ApiResult> DeleteAttribute(Guid id);

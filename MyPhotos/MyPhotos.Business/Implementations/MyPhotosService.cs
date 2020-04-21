@@ -34,13 +34,14 @@ namespace MyPhotos.Business.Implementations
             });
         }
 
-        public async Task<ApiResult> CreateAttribute(AttributeDto dto)
+        public async Task<ApiResult<AttributeDto>> CreateAttribute(AttributeDto dto)
         {
             var duplicateAttribute = await this.attributesRepository.FindOne(a => a.Name == dto.Name);
             return await Result.FailureIf(duplicateAttribute.HasValue, "Attribute already exists with given name!")
                 .Bind(() => Attribute.Create(dto.Name, dto.AllowsMultipleValues))
                 .Tap(a => this.attributesRepository.Add(a))
                 .Tap(() => this.attributesRepository.SaveChanges())
+                .Map(a => new AttributeDto { AllowsMultipleValues = a.AllowsMultipleValues, Id = a.Id, Name = a.Name})
                 .ToApiResult();
         }
 
@@ -49,6 +50,7 @@ namespace MyPhotos.Business.Implementations
             return await this.attributesRepository.GetById(id).ToResult("Attribute does not exist!")
                 .Tap(a => a.Delete())
                 .Tap(() => this.attributesRepository.SaveChanges())
+                .Bind(_ => Result.Ok())
                 .ToApiResult();
         }
 
@@ -68,13 +70,14 @@ namespace MyPhotos.Business.Implementations
             });
         }
 
-        public async Task<ApiResult> CreatePhoto(string path)
+        public async Task<ApiResult<FileDto>> CreatePhoto(string path)
         {
             var duplicatePhoto = await this.photosRepository.FindOne(p => p.Path == path);
             return await Result.FailureIf(duplicatePhoto.HasValue, "Photo already exists at given path!")
                 .Bind(() => Photo.Create(path))
                 .Tap(p => this.photosRepository.Add(p))
                 .Tap(() => this.photosRepository.SaveChanges())
+                .Map(p => new FileDto { Id = p.Id, Path = p.Path, CreatedAt = p.CreatedAt })
                 .ToApiResult();
         }
 
@@ -83,6 +86,7 @@ namespace MyPhotos.Business.Implementations
             return await this.photosRepository.GetById(id).ToResult("Photo does not exist!")
                 .Tap(a => a.Delete())
                 .Tap(() => this.photosRepository.SaveChanges())
+                .Bind(_ => Result.Ok())
                 .ToApiResult();
         }
     }

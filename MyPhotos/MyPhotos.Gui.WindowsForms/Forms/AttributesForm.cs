@@ -4,18 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSharpFunctionalExtensions;
-using MyPhotos.Domain.Interfaces;
-using Attribute = MyPhotos.Domain.Attribute;
+using MyPhotos.Business.Contracts;
 
 namespace MyPhotos.Gui.WindowsForms.Forms
 {
     public partial class AttributesForm : Form
     {
-        private readonly IRepository<Attribute> repository;
+        private readonly IMyPhotosFacade facade;
 
-        public AttributesForm(IRepository<Attribute> repository)
+        public AttributesForm(IMyPhotosFacade facade)
         {
-            this.repository = repository;
+            this.facade = facade;
 
             InitializeComponent();
             InitEvents();
@@ -31,34 +30,32 @@ namespace MyPhotos.Gui.WindowsForms.Forms
             this.AttributesList.Items.Clear();
         }
 
-        private Task Save()
+        private async Task Save()
         {
-            return Attribute.Create(AttributeNameInput.Text, AllowMultipleValuesCheckbox.Checked)
-                .Tap(a => this.repository.Add(a))
-                .Tap(() => this.repository.SaveChanges())
+            var dto = new AttributeDto { Name = AttributeNameInput.Text, AllowsMultipleValues = AllowMultipleValuesCheckbox.Checked };
+
+            await Result.Try(() => facade.CreateAttributeAsync(dto))
                 .Tap(() => AttributeNameInput.Text = string.Empty)
                 .Tap(() => AllowMultipleValuesCheckbox.Checked = false)
-                .Tap(a => AttributesList.Items.Add(new AttributeViewModel(a)))
+                .Tap(() => AttributesList.Items.Add(new AttributeViewModel(dto)))
                 .OnFailure(e => MessageBox.Show(e));
         }
 
-        private Task DeleteSelected()
+        private async Task DeleteSelected()
         {
             var selectedAttribute = AttributesList.SelectedItem as AttributeViewModel;
             if (selectedAttribute == null)
             {
-                return Task.CompletedTask;
+                return;
             }
 
-            return this.repository.GetById(selectedAttribute.Id).ToResult("Attribute not found")
-                .Tap(a => a.Delete())
-                .Tap(() => this.repository.SaveChanges())
-                .Tap(() => AttributesList.Items.Remove(selectedAttribute));
+            await Result.Try(() => this.facade.DeleteAttributeAsync(selectedAttribute.Id))
+                .Tap(() => AttributesList.Items.Remove(AttributesList.SelectedItem));
         }
 
         private async Task LoadList()
         {
-            var attributes = (await this.repository.GetAll())
+            var attributes = (await this.facade.GetAttributesAsync())
                 .Select(a => new AttributeViewModel(a));
             AttributesList.Items.AddRange(attributes.ToArray());
         }
@@ -72,7 +69,7 @@ namespace MyPhotos.Gui.WindowsForms.Forms
 
         private sealed class AttributeViewModel
         {
-            public AttributeViewModel(Attribute attribute)
+            public AttributeViewModel(AttributeDto attribute)
             {
                 Id = attribute.Id;
                 Name = attribute.Name;
