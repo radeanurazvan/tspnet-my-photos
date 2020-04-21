@@ -1,0 +1,7 @@
+Common = folder ce grupeaza contracte comune intre entitati
+
+Entities = folder ce contine API-ul entitatilor
+
+Interfaces = folder ce contine interfete expuse, folosite drept API de catre clienti precum GUI
+
+Repositories = implementari din "Interfaces"
