@@ -24,6 +24,7 @@ namespace MyPhotos.Domain
         public System.DateTime CreatedAt { get; private set; }
         public string Path { get; private set; }
         public bool IsDeleted { get; private set; }
+        public string Title { get; private set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FileAttribute> FileAttributes { get; private set; }

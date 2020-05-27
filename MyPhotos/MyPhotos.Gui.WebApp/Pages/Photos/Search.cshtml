@@ -1,0 +1,58 @@
+﻿@page
+@model Photos.SearchModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Cuprins</h1>
+
+<div class="form-group">
+    <form action="/Photos/Search">
+        <label>Cautare dupa cuvinte cheie</label>
+        <input value="@Model.Keyword" type="text" id="Keyword" name="Keyword" placeholder="Ex: concediu" class="form-control" />
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Files.First().Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files.First().Path)
+            </th>
+            <th>
+                Preview
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files.First().Attributes)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Files) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Path)
+            </td>
+            <td>
+                <img style="max-height: 200px; width: auto;" src="http://localhost:8887/@item.Path.Split("Pictures").Last()"/>
+            </td>
+            <td>
+                @foreach (var x in item.Attributes)
+                {
+                    <b>@x.AttributeName:</b>
+                    <span>@x.Value</span>
+                    <br />
+                    <br />
+                    <br />
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

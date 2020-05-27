@@ -11,328 +11,283 @@
 namespace MyPhotos.Business.Contracts
 {
     using System.Runtime.Serialization;
-    
-    
+
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AttributeDto", Namespace="http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "AttributeDto", Namespace = "http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
     public partial class AttributeDto : object, System.Runtime.Serialization.IExtensibleDataObject
     {
-        
+
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
+
         private bool AllowsMultipleValuesField;
-        
+
         private System.Guid IdField;
-        
+
         private string NameField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get
-            {
+
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
                 return this.extensionDataField;
             }
-            set
-            {
+            set {
                 this.extensionDataField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool AllowsMultipleValues
-        {
-            get
-            {
+        public bool AllowsMultipleValues {
+            get {
                 return this.AllowsMultipleValuesField;
             }
-            set
-            {
+            set {
                 this.AllowsMultipleValuesField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Id
-        {
-            get
-            {
+        public System.Guid Id {
+            get {
                 return this.IdField;
             }
-            set
-            {
+            set {
                 this.IdField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name
-        {
-            get
-            {
+        public string Name {
+            get {
                 return this.NameField;
             }
-            set
-            {
+            set {
                 this.NameField = value;
             }
         }
     }
-    
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ApiResult", Namespace="http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "ApiResult", Namespace = "http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MyPhotos.Business.Contracts.ApiResultOfAttributeDtoRYvytkfI))]
     public partial class ApiResult : object, System.Runtime.Serialization.IExtensibleDataObject
     {
-        
+
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
+
         private string ErrorField;
-        
+
         private bool IsFailureField;
-        
+
         private bool IsSuccessField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get
-            {
+
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
                 return this.extensionDataField;
             }
-            set
-            {
+            set {
                 this.extensionDataField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Error
-        {
-            get
-            {
+        public string Error {
+            get {
                 return this.ErrorField;
             }
-            set
-            {
+            set {
                 this.ErrorField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsFailure
-        {
-            get
-            {
+        public bool IsFailure {
+            get {
                 return this.IsFailureField;
             }
-            set
-            {
+            set {
                 this.IsFailureField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsSuccess
-        {
-            get
-            {
+        public bool IsSuccess {
+            get {
                 return this.IsSuccessField;
             }
-            set
-            {
+            set {
                 this.IsSuccessField = value;
             }
         }
     }
-    
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ApiResultOfFileDtoRYvytkfI", Namespace="http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "ApiResultOfFileDtoRYvytkfI", Namespace = "http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
     public partial class ApiResultOfFileDtoRYvytkfI : MyPhotos.Business.Contracts.ApiResult
     {
-        
+
         private MyPhotos.Business.Contracts.FileDto ValueField;
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MyPhotos.Business.Contracts.FileDto Value
-        {
-            get
-            {
+        public MyPhotos.Business.Contracts.FileDto Value {
+            get {
                 return this.ValueField;
             }
-            set
-            {
+            set {
                 this.ValueField = value;
             }
         }
     }
-    
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ApiResultOfAttributeDtoRYvytkfI", Namespace="http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "ApiResultOfAttributeDtoRYvytkfI", Namespace = "http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
     public partial class ApiResultOfAttributeDtoRYvytkfI : MyPhotos.Business.Contracts.ApiResult
     {
-        
+
         private MyPhotos.Business.Contracts.AttributeDto ValueField;
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MyPhotos.Business.Contracts.AttributeDto Value
-        {
-            get
-            {
+        public MyPhotos.Business.Contracts.AttributeDto Value {
+            get {
                 return this.ValueField;
             }
-            set
-            {
+            set {
                 this.ValueField = value;
             }
         }
     }
-    
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FileDto", Namespace="http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "FileDto", Namespace = "http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
     public partial class FileDto : object, System.Runtime.Serialization.IExtensibleDataObject
     {
-        
+
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
+
         private MyPhotos.Business.Contracts.FileAttributeDto[] AttributesField;
-        
+
         private System.DateTime CreatedAtField;
-        
+
         private System.Guid IdField;
-        
+
         private string PathField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get
-            {
+
+        private string TitleField;
+
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
                 return this.extensionDataField;
             }
-            set
-            {
+            set {
                 this.extensionDataField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MyPhotos.Business.Contracts.FileAttributeDto[] Attributes
-        {
-            get
-            {
+        public MyPhotos.Business.Contracts.FileAttributeDto[] Attributes {
+            get {
                 return this.AttributesField;
             }
-            set
-            {
+            set {
                 this.AttributesField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime CreatedAt
-        {
-            get
-            {
+        public System.DateTime CreatedAt {
+            get {
                 return this.CreatedAtField;
             }
-            set
-            {
+            set {
                 this.CreatedAtField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Id
-        {
-            get
-            {
+        public System.Guid Id {
+            get {
                 return this.IdField;
             }
-            set
-            {
+            set {
                 this.IdField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Path
-        {
-            get
-            {
+        public string Path {
+            get {
                 return this.PathField;
             }
-            set
-            {
+            set {
                 this.PathField = value;
             }
         }
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                this.TitleField = value;
+            }
+        }
     }
-    
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FileAttributeDto", Namespace="http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "FileAttributeDto", Namespace = "http://schemas.datacontract.org/2004/07/MyPhotos.Business.Contracts")]
     public partial class FileAttributeDto : object, System.Runtime.Serialization.IExtensibleDataObject
     {
-        
+
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
+
         private System.Guid AttributeIdField;
-        
+
         private string AttributeNameField;
-        
+
         private string ValueField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get
-            {
+
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
                 return this.extensionDataField;
             }
-            set
-            {
+            set {
                 this.extensionDataField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid AttributeId
-        {
-            get
-            {
+        public System.Guid AttributeId {
+            get {
                 return this.AttributeIdField;
             }
-            set
-            {
+            set {
                 this.AttributeIdField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AttributeName
-        {
-            get
-            {
+        public string AttributeName {
+            get {
                 return this.AttributeNameField;
             }
-            set
-            {
+            set {
                 this.AttributeNameField = value;
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Value
-        {
-            get
-            {
+        public string Value {
+            get {
                 return this.ValueField;
             }
-            set
-            {
+            set {
                 this.ValueField = value;
             }
         }
@@ -341,44 +296,68 @@ namespace MyPhotos.Business.Contracts
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-[System.ServiceModel.ServiceContractAttribute(ConfigurationName="IMyPhotosFacade")]
+[System.ServiceModel.ServiceContractAttribute(ConfigurationName = "IMyPhotosFacade")]
 public interface IMyPhotosFacade
 {
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAttributesService/GetAttributes", ReplyAction="http://tempuri.org/IAttributesService/GetAttributesResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IAttributesService/GetAttributes", ReplyAction = "http://tempuri.org/IAttributesService/GetAttributesResponse")]
     MyPhotos.Business.Contracts.AttributeDto[] GetAttributes();
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAttributesService/GetAttributes", ReplyAction="http://tempuri.org/IAttributesService/GetAttributesResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IAttributesService/GetAttributes", ReplyAction = "http://tempuri.org/IAttributesService/GetAttributesResponse")]
     System.Threading.Tasks.Task<MyPhotos.Business.Contracts.AttributeDto[]> GetAttributesAsync();
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAttributesService/CreateAttribute", ReplyAction="http://tempuri.org/IAttributesService/CreateAttributeResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IAttributesService/CreateAttribute", ReplyAction = "http://tempuri.org/IAttributesService/CreateAttributeResponse")]
     MyPhotos.Business.Contracts.ApiResultOfAttributeDtoRYvytkfI CreateAttribute(MyPhotos.Business.Contracts.AttributeDto dto);
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAttributesService/CreateAttribute", ReplyAction="http://tempuri.org/IAttributesService/CreateAttributeResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IAttributesService/CreateAttribute", ReplyAction = "http://tempuri.org/IAttributesService/CreateAttributeResponse")]
     System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResultOfAttributeDtoRYvytkfI> CreateAttributeAsync(MyPhotos.Business.Contracts.AttributeDto dto);
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAttributesService/DeleteAttribute", ReplyAction="http://tempuri.org/IAttributesService/DeleteAttributeResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IAttributesService/GetAllAttributesValues", ReplyAction = "http://tempuri.org/IAttributesService/GetAllAttributesValuesResponse")]
+    MyPhotos.Business.Contracts.FileAttributeDto[] GetAllAttributesValues();
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IAttributesService/GetAllAttributesValues", ReplyAction = "http://tempuri.org/IAttributesService/GetAllAttributesValuesResponse")]
+    System.Threading.Tasks.Task<MyPhotos.Business.Contracts.FileAttributeDto[]> GetAllAttributesValuesAsync();
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IAttributesService/DeleteAttribute", ReplyAction = "http://tempuri.org/IAttributesService/DeleteAttributeResponse")]
     MyPhotos.Business.Contracts.ApiResult DeleteAttribute(System.Guid id);
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAttributesService/DeleteAttribute", ReplyAction="http://tempuri.org/IAttributesService/DeleteAttributeResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IAttributesService/DeleteAttribute", ReplyAction = "http://tempuri.org/IAttributesService/DeleteAttributeResponse")]
     System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResult> DeleteAttributeAsync(System.Guid id);
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPhotosService/GetPhotos", ReplyAction="http://tempuri.org/IPhotosService/GetPhotosResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/GetPhotos", ReplyAction = "http://tempuri.org/IPhotosService/GetPhotosResponse")]
     MyPhotos.Business.Contracts.FileDto[] GetPhotos();
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPhotosService/GetPhotos", ReplyAction="http://tempuri.org/IPhotosService/GetPhotosResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/GetPhotos", ReplyAction = "http://tempuri.org/IPhotosService/GetPhotosResponse")]
     System.Threading.Tasks.Task<MyPhotos.Business.Contracts.FileDto[]> GetPhotosAsync();
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPhotosService/CreatePhoto", ReplyAction="http://tempuri.org/IPhotosService/CreatePhotoResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/FindByKeyword", ReplyAction = "http://tempuri.org/IPhotosService/FindByKeywordResponse")]
+    MyPhotos.Business.Contracts.FileDto[] FindByKeyword(string keyword);
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/FindByKeyword", ReplyAction = "http://tempuri.org/IPhotosService/FindByKeywordResponse")]
+    System.Threading.Tasks.Task<MyPhotos.Business.Contracts.FileDto[]> FindByKeywordAsync(string keyword);
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/CreatePhoto", ReplyAction = "http://tempuri.org/IPhotosService/CreatePhotoResponse")]
     MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI CreatePhoto(string path);
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPhotosService/CreatePhoto", ReplyAction="http://tempuri.org/IPhotosService/CreatePhotoResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/CreatePhoto", ReplyAction = "http://tempuri.org/IPhotosService/CreatePhotoResponse")]
     System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI> CreatePhotoAsync(string path);
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPhotosService/DeletePhoto", ReplyAction="http://tempuri.org/IPhotosService/DeletePhotoResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/ChangeTitle", ReplyAction = "http://tempuri.org/IPhotosService/ChangeTitleResponse")]
+    MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI ChangeTitle(System.Guid id, string title);
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/ChangeTitle", ReplyAction = "http://tempuri.org/IPhotosService/ChangeTitleResponse")]
+    System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI> ChangeTitleAsync(System.Guid id, string title);
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/AddAttributeValue", ReplyAction = "http://tempuri.org/IPhotosService/AddAttributeValueResponse")]
+    MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI AddAttributeValue(System.Guid id, System.Guid attributeId, string value);
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/AddAttributeValue", ReplyAction = "http://tempuri.org/IPhotosService/AddAttributeValueResponse")]
+    System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI> AddAttributeValueAsync(System.Guid id, System.Guid attributeId, string value);
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/DeletePhoto", ReplyAction = "http://tempuri.org/IPhotosService/DeletePhotoResponse")]
     MyPhotos.Business.Contracts.ApiResult DeletePhoto(System.Guid id);
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPhotosService/DeletePhoto", ReplyAction="http://tempuri.org/IPhotosService/DeletePhotoResponse")]
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IPhotosService/DeletePhoto", ReplyAction = "http://tempuri.org/IPhotosService/DeletePhotoResponse")]
     System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResult> DeletePhotoAsync(System.Guid id);
 }
 
@@ -391,86 +370,126 @@ public interface IMyPhotosFacadeChannel : IMyPhotosFacade, System.ServiceModel.I
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 public partial class MyPhotosFacadeClient : System.ServiceModel.ClientBase<IMyPhotosFacade>, IMyPhotosFacade
 {
-    
+
     public MyPhotosFacadeClient()
     {
     }
-    
-    public MyPhotosFacadeClient(string endpointConfigurationName) : 
+
+    public MyPhotosFacadeClient(string endpointConfigurationName) :
             base(endpointConfigurationName)
     {
     }
-    
-    public MyPhotosFacadeClient(string endpointConfigurationName, string remoteAddress) : 
+
+    public MyPhotosFacadeClient(string endpointConfigurationName, string remoteAddress) :
             base(endpointConfigurationName, remoteAddress)
     {
     }
-    
-    public MyPhotosFacadeClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+
+    public MyPhotosFacadeClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) :
             base(endpointConfigurationName, remoteAddress)
     {
     }
-    
-    public MyPhotosFacadeClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+
+    public MyPhotosFacadeClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) :
             base(binding, remoteAddress)
     {
     }
-    
+
     public MyPhotos.Business.Contracts.AttributeDto[] GetAttributes()
     {
         return base.Channel.GetAttributes();
     }
-    
+
     public System.Threading.Tasks.Task<MyPhotos.Business.Contracts.AttributeDto[]> GetAttributesAsync()
     {
         return base.Channel.GetAttributesAsync();
     }
-    
+
     public MyPhotos.Business.Contracts.ApiResultOfAttributeDtoRYvytkfI CreateAttribute(MyPhotos.Business.Contracts.AttributeDto dto)
     {
         return base.Channel.CreateAttribute(dto);
     }
-    
+
     public System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResultOfAttributeDtoRYvytkfI> CreateAttributeAsync(MyPhotos.Business.Contracts.AttributeDto dto)
     {
         return base.Channel.CreateAttributeAsync(dto);
     }
-    
+
+    public MyPhotos.Business.Contracts.FileAttributeDto[] GetAllAttributesValues()
+    {
+        return base.Channel.GetAllAttributesValues();
+    }
+
+    public System.Threading.Tasks.Task<MyPhotos.Business.Contracts.FileAttributeDto[]> GetAllAttributesValuesAsync()
+    {
+        return base.Channel.GetAllAttributesValuesAsync();
+    }
+
     public MyPhotos.Business.Contracts.ApiResult DeleteAttribute(System.Guid id)
     {
         return base.Channel.DeleteAttribute(id);
     }
-    
+
     public System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResult> DeleteAttributeAsync(System.Guid id)
     {
         return base.Channel.DeleteAttributeAsync(id);
     }
-    
+
     public MyPhotos.Business.Contracts.FileDto[] GetPhotos()
     {
         return base.Channel.GetPhotos();
     }
-    
+
     public System.Threading.Tasks.Task<MyPhotos.Business.Contracts.FileDto[]> GetPhotosAsync()
     {
         return base.Channel.GetPhotosAsync();
     }
-    
+
+    public MyPhotos.Business.Contracts.FileDto[] FindByKeyword(string keyword)
+    {
+        return base.Channel.FindByKeyword(keyword);
+    }
+
+    public System.Threading.Tasks.Task<MyPhotos.Business.Contracts.FileDto[]> FindByKeywordAsync(string keyword)
+    {
+        return base.Channel.FindByKeywordAsync(keyword);
+    }
+
     public MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI CreatePhoto(string path)
     {
         return base.Channel.CreatePhoto(path);
     }
-    
+
     public System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI> CreatePhotoAsync(string path)
     {
         return base.Channel.CreatePhotoAsync(path);
     }
-    
+
+    public MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI ChangeTitle(System.Guid id, string title)
+    {
+        return base.Channel.ChangeTitle(id, title);
+    }
+
+    public System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI> ChangeTitleAsync(System.Guid id, string title)
+    {
+        return base.Channel.ChangeTitleAsync(id, title);
+    }
+
+    public MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI AddAttributeValue(System.Guid id, System.Guid attributeId, string value)
+    {
+        return base.Channel.AddAttributeValue(id, attributeId, value);
+    }
+
+    public System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResultOfFileDtoRYvytkfI> AddAttributeValueAsync(System.Guid id, System.Guid attributeId, string value)
+    {
+        return base.Channel.AddAttributeValueAsync(id, attributeId, value);
+    }
+
     public MyPhotos.Business.Contracts.ApiResult DeletePhoto(System.Guid id)
     {
         return base.Channel.DeletePhoto(id);
     }
-    
+
     public System.Threading.Tasks.Task<MyPhotos.Business.Contracts.ApiResult> DeletePhotoAsync(System.Guid id)
     {
         return base.Channel.DeletePhotoAsync(id);

@@ -1,4 +1,6 @@
-﻿using CSharpFunctionalExtensions;
+﻿using System;
+using System.Linq;
+using CSharpFunctionalExtensions;
 
 namespace MyPhotos.Domain
 {
@@ -17,6 +19,11 @@ namespace MyPhotos.Domain
         {
             return Result.FailureIf(string.IsNullOrEmpty(path?.Trim()), "Invalid file path!")
                 .Map(() => new Photo(path));
+        }
+
+        public bool ContainsKeyword(string word)
+        {
+            return FileAttributes.Any(fa => fa.Value.IndexOf(word, StringComparison.OrdinalIgnoreCase) >= 0);
         }
     }
 }

@@ -32,6 +32,8 @@
             this.AllPhotosLabel = new System.Windows.Forms.Label();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.AddAttributeBtn = new System.Windows.Forms.Button();
+            this.ChangeTitleBtn = new System.Windows.Forms.Button();
             this.AddPhotoBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -69,9 +71,29 @@
             this.FileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif;" +
     " *.png";
             // 
+            // AddAttributeBtn
+            // 
+            this.AddAttributeBtn.Enabled = false;
+            this.AddAttributeBtn.Location = new System.Drawing.Point(536, 30);
+            this.AddAttributeBtn.Name = "AddAttributeBtn";
+            this.AddAttributeBtn.Size = new System.Drawing.Size(114, 32);
+            this.AddAttributeBtn.TabIndex = 4;
+            this.AddAttributeBtn.Text = "Add attribute";
+            this.AddAttributeBtn.UseVisualStyleBackColor = true;
+            // 
+            // ChangeTitleBtn
+            // 
+            this.ChangeTitleBtn.Enabled = false;
+            this.ChangeTitleBtn.Location = new System.Drawing.Point(404, 30);
+            this.ChangeTitleBtn.Name = "ChangeTitleBtn";
+            this.ChangeTitleBtn.Size = new System.Drawing.Size(114, 32);
+            this.ChangeTitleBtn.TabIndex = 4;
+            this.ChangeTitleBtn.Text = "Change title";
+            this.ChangeTitleBtn.UseVisualStyleBackColor = true;
+            // 
             // AddPhotoBtn
             // 
-            this.AddPhotoBtn.Location = new System.Drawing.Point(536, 30);
+            this.AddPhotoBtn.Location = new System.Drawing.Point(271, 30);
             this.AddPhotoBtn.Name = "AddPhotoBtn";
             this.AddPhotoBtn.Size = new System.Drawing.Size(114, 32);
             this.AddPhotoBtn.TabIndex = 4;
@@ -84,6 +106,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.AddPhotoBtn);
+            this.Controls.Add(this.ChangeTitleBtn);
+            this.Controls.Add(this.AddAttributeBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.AllPhotosLabel);
             this.Controls.Add(this.PhotosList);
@@ -99,6 +123,8 @@
         private System.Windows.Forms.Label AllPhotosLabel;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.OpenFileDialog FileDialog;
+        private System.Windows.Forms.Button AddAttributeBtn;
+        private System.Windows.Forms.Button ChangeTitleBtn;
         private System.Windows.Forms.Button AddPhotoBtn;
     }
 }

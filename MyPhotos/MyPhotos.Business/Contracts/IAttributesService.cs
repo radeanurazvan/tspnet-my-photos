@@ -15,6 +15,9 @@ namespace MyPhotos.Business.Contracts
         Task<ApiResult<AttributeDto>> CreateAttribute(AttributeDto dto);
 
         [OperationContract]
+        Task<IEnumerable<FileAttributeDto>> GetAllAttributesValues();
+
+        [OperationContract]
         Task<ApiResult> DeleteAttribute(Guid id);
     }
 }

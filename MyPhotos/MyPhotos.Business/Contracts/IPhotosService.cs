@@ -12,7 +12,16 @@ namespace MyPhotos.Business.Contracts
         Task<IEnumerable<FileDto>> GetPhotos();
 
         [OperationContract]
+        Task<IEnumerable<FileDto>> FindByKeyword(string keyword);
+
+        [OperationContract]
         Task<ApiResult<FileDto>> CreatePhoto(string path);
+
+        [OperationContract]
+        Task<ApiResult<FileDto>> ChangeTitle(Guid id, string title);
+
+        [OperationContract]
+        Task<ApiResult<FileDto>> AddAttributeValue(Guid id, Guid attributeId, string value);
 
         [OperationContract]
         Task<ApiResult> DeletePhoto(Guid id);

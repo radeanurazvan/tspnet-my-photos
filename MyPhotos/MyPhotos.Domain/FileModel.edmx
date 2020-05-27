@@ -35,6 +35,7 @@
     <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
     <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="true" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Attributes">
@@ -145,6 +146,7 @@
           <Property Name="Path" Type="String" Nullable="false" cg:SetterAccess="Private" />
           <NavigationProperty Name="FileAttributes" Relationship="FileModel.FileFileAttribute" FromRole="File" ToRole="FileAttribute" cg:SetterAccess="Private" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" cg:SetterAccess="Private" />
+          <Property Name="Title" Type="String" Nullable="true" cg:SetterAccess="Private" />
         </EntityType>
         <EntityType Name="Attribute">
           <Key>
@@ -204,6 +206,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>

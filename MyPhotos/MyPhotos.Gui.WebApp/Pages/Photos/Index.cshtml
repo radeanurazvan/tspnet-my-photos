@@ -1,0 +1,39 @@
+﻿@page
+@model Photos.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Cuprins</h1>
+
+<div class="form-group">
+    <form action="/Photos/Search">
+        <label>Cautare dupa cuvinte cheie</label>
+        <input type="text" id="Keyword" name="Keyword" placeholder="Ex: concediu" class="form-control" />
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Attributes.First().AttributeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attributes.First().Value)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Attributes) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttributeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

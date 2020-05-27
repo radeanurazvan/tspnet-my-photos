@@ -45,6 +45,16 @@ namespace MyPhotos.Business.Implementations
                 .ToApiResult();
         }
 
+        public async Task<IEnumerable<FileAttributeDto>> GetAllAttributesValues()
+        {
+            var photos = await this.photosRepository.GetAll();
+            return photos.SelectMany(p => p.FileAttributes)
+                .Select(fa => new FileAttributeDto(fa))
+                .Distinct(new AttributeValueComparer())
+                .OrderBy(fa => fa.AttributeName)
+                .ThenBy(fa => fa.Value);
+        }
+
         public async Task<ApiResult> DeleteAttribute(Guid id)
         {
             return await this.attributesRepository.GetById(id).ToResult("Attribute does not exist!")
@@ -57,17 +67,15 @@ namespace MyPhotos.Business.Implementations
         public async Task<IEnumerable<FileDto>> GetPhotos()
         {
             var photos = await photosRepository.GetAll();
-            return photos.Select(p => new FileDto
-            {
-                Id = p.Id,
-                Path = p.Path,
-                Attributes = p.FileAttributes.Select(fa => new FileAttributeDto
-                {
-                    AttributeId = fa.AttributeId.GetValueOrDefault(),
-                    AttributeName = fa.Attribute.Name,
-                    Value = fa.Value
-                })
-            });
+            return photos.Select(p => new FileDto(p));
+        }
+
+        public async Task<IEnumerable<FileDto>> FindByKeyword(string keyword)
+        {
+            var photos = await this.photosRepository.GetAll();
+
+            return photos.Where(p => p.ContainsKeyword(keyword))
+                .Select(p => new FileDto(p));
         }
 
         public async Task<ApiResult<FileDto>> CreatePhoto(string path)
@@ -77,7 +85,29 @@ namespace MyPhotos.Business.Implementations
                 .Bind(() => Photo.Create(path))
                 .Tap(p => this.photosRepository.Add(p))
                 .Tap(() => this.photosRepository.SaveChanges())
-                .Map(p => new FileDto { Id = p.Id, Path = p.Path, CreatedAt = p.CreatedAt })
+                .Map(p => new FileDto(p))
+                .ToApiResult();
+        }
+
+        public async Task<ApiResult<FileDto>> ChangeTitle(Guid id, string title)
+        {
+            var photoResult = await this.photosRepository.GetById(id).ToResult("Photo does not exist!");
+            return await photoResult
+                .Bind(p => p.ChangeTitle(title))
+                .Tap(() => this.photosRepository.SaveChanges())
+                .Map(() => new FileDto(photoResult.Value))
+                .ToApiResult();
+        }
+
+        public async Task<ApiResult<FileDto>> AddAttributeValue(Guid id, Guid attributeId, string value)
+        {
+            var photoResult = await this.photosRepository.GetById(id).ToResult("Photo does not exist!");
+            var attributeResult = await attributesRepository.GetById(attributeId).ToResult("Attribute does not exist!");
+
+            return await Result.FirstFailureOrSuccess(photoResult, attributeResult)
+                .Bind(() => photoResult.Value.AddAttribute(attributeResult.Value, value))
+                .Tap(() => this.photosRepository.SaveChanges())
+                .Map(() => new FileDto(photoResult.Value))
                 .ToApiResult();
         }
 
@@ -88,6 +118,19 @@ namespace MyPhotos.Business.Implementations
                 .Tap(() => this.photosRepository.SaveChanges())
                 .Bind(_ => Result.Ok())
                 .ToApiResult();
+        }
+
+        private sealed class AttributeValueComparer : IEqualityComparer<FileAttributeDto>
+        {
+            public bool Equals(FileAttributeDto x, FileAttributeDto y)
+            {
+                return x.AttributeId == y.AttributeId && x.Value == y.Value;
+            }
+
+            public int GetHashCode(FileAttributeDto obj)
+            {
+                return obj.Value.GetHashCode() + obj.AttributeId.GetHashCode();
+            }
         }
     }
 }
